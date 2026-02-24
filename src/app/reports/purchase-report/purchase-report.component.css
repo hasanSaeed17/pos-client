@@ -2,6 +2,12 @@
 
 .report-wrapper {
   padding: 20px 28px;
+
+  transform: scale(0.83);        /* try 0.85 first */
+  transform-origin: top left;    /* VERY IMPORTANT */
+  width: calc(100% / 0.87);
+  height: auto;   
+
 }
 
 
@@ -174,7 +180,7 @@ mat-panel-description {
 }
 
 .product-table thead {
-  background: #f9fafb;
+  background: #e9edf1;
 }
 
 .product-table th {

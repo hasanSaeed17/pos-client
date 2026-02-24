@@ -1,6 +1,6 @@
 export interface Product {
 
-  _id?: string;
+  _id: string;
 
   name: string;
   category?: string;
@@ -10,10 +10,17 @@ export interface Product {
   sellingPrice: number;
 
   currentStock: number;
-  lowStockQuantity?: number;
+  lowStockQuantity: number;
 
-  supplierId: string;
-  purchaseId: string;
+  supplierId: {
+    _id: string;
+    name: string;
+  } | null;
+
+  purchaseId: {
+    _id: string;
+    purchaseCode: string;
+  };
 
   createdAt?: Date;
   updatedAt?: Date;

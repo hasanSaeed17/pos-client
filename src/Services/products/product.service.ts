@@ -27,13 +27,11 @@ export class ProductService {
 
   /* ================= AVAILABLE PRODUCTS ================= */
 
-  getAvailableProducts(): Observable<Product[]> {
-    return this.http.get<any>(`${this.testingBaseUrl}/availableProducts`)
-      .pipe(
-        map(res => res.data),
-        catchError(this.handleError)
-      );
-  }
+getAvailableProducts(): Observable<Product[]> {
+  return this.http
+    .get<any>(this.testingBaseUrl + '/availableProducts')
+    .pipe(map(res => res.data));
+}
 
   /* ================= LOW STOCK ================= */
 
