@@ -5,6 +5,8 @@ import { catchError } from 'rxjs/operators';
 import { Sale } from '../../Models/saleModel';
 import { environment as testingEnvironment } from '../../environment/testingEnvironment';
 
+import { HttpParams } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -47,6 +49,21 @@ export class SalesService {
     }
 
     return throwError(() => new Error(message));
+  }
+
+   getSales(filters?: any): Observable<any> {
+
+    let params = new HttpParams();
+
+    if (filters) {
+      Object.keys(filters).forEach(key => {
+        if (filters[key]) {
+          params = params.set(key, filters[key]);
+        }
+      });
+    }
+
+    return this.http.get<any>(this.testingBaseUrl, { params });
   }
 
 

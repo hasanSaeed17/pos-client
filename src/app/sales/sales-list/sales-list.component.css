@@ -1,0 +1,159 @@
+/* ===============================
+   WRAPPER
+================================= */
+
+.sales-wrapper {
+  padding: 24px;
+  background: #f5f6fa;
+  min-height: 100vh;
+}
+
+mat-card {
+  max-width: 1300px;
+  margin: auto;
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* ===============================
+   PROFESSIONAL STAT CARDS
+================================= */
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.stat-card {
+  background: #ffffff;
+  padding: 22px 26px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Left Accent Line */
+.stat-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 5px;
+  border-radius: 12px 0 0 12px;
+}
+
+/* Accent Colors */
+.stat-card.sales::before {
+  background: #1976d2;
+}
+
+.stat-card.transactions::before {
+  background: #7b1fa2;
+}
+
+.stat-card.paid::before {
+  background: #2e7d32;
+}
+
+.stat-card.pending::before {
+  background: #ef6c00;
+}
+
+.stat-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #777;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.stat-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #222;
+}
+
+/* ===============================
+   FILTER GRID
+================================= */
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  margin-bottom: 25px;
+  align-items: center;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* ===============================
+   TABLE
+================================= */
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-header-cell {
+  font-weight: 600;
+}
+
+.paid {
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.partial {
+  color: #f57c00;
+  font-weight: 600;
+}
+
+.unpaid {
+  color: #d32f2f;
+  font-weight: 600;
+}
+
+/* ===============================
+   LOADING
+================================= */
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+/* ===============================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 1100px) {
+
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filter-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
