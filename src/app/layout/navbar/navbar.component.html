@@ -4,33 +4,6 @@
 
   <span class="spacer"></span>
 
-  <!-- SUPPLIER MENU -->
-  <button mat-button [matMenuTriggerFor]="supplierMenu">
-    Supplier
-  </button>
-
-  <mat-menu #supplierMenu="matMenu">
-    <button mat-menu-item (click)="navigate('supplierOrder')">
-      Supplier Order
-    </button>
-    <button mat-menu-item (click)="navigate('supplierList')">
-      Supplier List
-    </button>
-  </mat-menu>
-
-  <!-- PURCHASE MENU -->
-  <button mat-button [matMenuTriggerFor]="purchaseMenu">
-    Purchase
-  </button>
-
-  <mat-menu #purchaseMenu="matMenu">
-    <button mat-menu-item (click)="navigate('purchaseOrder')">
-      New Purchase
-    </button>
-    <button mat-menu-item (click)="navigate('purchaseList')">
-      Purchase List
-    </button>
-  </mat-menu>
 
   <!-- SALES MENU -->
   <button mat-button [matMenuTriggerFor]="salesMenu">
@@ -46,12 +19,47 @@
     </button>
   </mat-menu>
 
+
+
+  <!-- PURCHASE MENU -->
+  <button mat-button [matMenuTriggerFor]="purchaseMenu">
+    Purchase
+  </button>
+
+  <mat-menu #purchaseMenu="matMenu">
+    <button mat-menu-item (click)="navigate('purchaseOrder')">
+      New Purchase
+    </button>
+    <button mat-menu-item (click)="navigate('purchaseList')">
+      Purchase List
+    </button>
+  </mat-menu>
+
+
+  <!-- SUPPLIER MENU -->
+  <button mat-button [matMenuTriggerFor]="supplierMenu">
+    Supplier
+  </button>
+
+  <mat-menu #supplierMenu="matMenu">
+    <button mat-menu-item (click)="navigate('supplierOrder')">
+      Supplier Order
+    </button>
+    <button mat-menu-item (click)="navigate('supplierList')">
+      Supplier List
+    </button>
+  </mat-menu>
+
+
   <!-- REPORTS MENU -->
   <button mat-button [matMenuTriggerFor]="reportsMenu">
     Reports
   </button>
 
   <mat-menu #reportsMenu="matMenu">
+    <button mat-menu-item (click)="navigate('salesReport')">
+      Sales Report
+    </button>
     <button mat-menu-item (click)="navigate('purchaseReport')">
       Purchase Report
     </button>
