@@ -7,6 +7,7 @@ import { PurchaseListComponent } from './purchase/purchase-list/purchase-list.co
 import { SaleOrderComponent } from './sales/sale-order/sale-order.component';
 import { SalesListComponent } from './sales/sales-list/sales-list.component';
 import { PurchaseReportComponent } from './reports/purchase-report/purchase-report.component';
+import { SalesReportComponent } from './reports/sales-report/sales-report.component';
 
 export const routes: Routes = [
 
@@ -16,7 +17,8 @@ export const routes: Routes = [
     {path: 'purchaseList', component: PurchaseListComponent},
     {path: 'purchaseReport', component: PurchaseReportComponent},
     {path: 'saleOrder', component: SaleOrderComponent},
-    {path: 'salesList', component: SalesListComponent}
+    {path: 'salesList', component: SalesListComponent},
+    {path: 'salesReport', component: SalesReportComponent},
 
 
 ];
