@@ -1,0 +1,17 @@
+.inventory-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: nowrap;   /* prevents wrapping */
+}
+
+.inventory-toolbar mat-form-field {
+  width: 220px;
+}
+
+.date-filters {
+  display: flex;
+  align-items: center;
+  margin-left: 12%;
+}
+

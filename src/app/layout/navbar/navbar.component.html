@@ -35,6 +35,19 @@
     </button>
   </mat-menu>
 
+  <!-- INVENTORY MENU -->
+  <button mat-button [matMenuTriggerFor]="inventoryMenu">
+    Inventory
+  </button>
+
+  <mat-menu #inventoryMenu="matMenu">
+    <button mat-menu-item (click)="navigate('inventoryAdjustment')">
+      Adjust Inventory
+    </button>
+    <button mat-menu-item (click)="navigate('inventoryList')">
+      Inventory List
+    </button>
+  </mat-menu>
 
   <!-- SUPPLIER MENU -->
   <button mat-button [matMenuTriggerFor]="supplierMenu">

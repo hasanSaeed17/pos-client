@@ -8,6 +8,8 @@ import { SaleOrderComponent } from './sales/sale-order/sale-order.component';
 import { SalesListComponent } from './sales/sales-list/sales-list.component';
 import { PurchaseReportComponent } from './reports/purchase-report/purchase-report.component';
 import { SalesReportComponent } from './reports/sales-report/sales-report.component';
+import { InventoryAdjustmentComponent } from './inventory/inventory-adjustment/inventory-adjustment.component';
+import { InventoryListComponent } from './inventory/inventory-list/inventory-list.component';
 
 export const routes: Routes = [
 
@@ -19,6 +21,8 @@ export const routes: Routes = [
     {path: 'saleOrder', component: SaleOrderComponent},
     {path: 'salesList', component: SalesListComponent},
     {path: 'salesReport', component: SalesReportComponent},
+    {path: 'inventoryAdjustment', component: InventoryAdjustmentComponent},
+    {path: 'inventoryList', component: InventoryListComponent},
 
 
 ];
