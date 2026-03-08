@@ -24,6 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { MatRippleModule } from '@angular/material/core';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @Component({
@@ -41,7 +42,8 @@ import { MatRippleModule } from '@angular/material/core';
     MatIconModule,
     MatDividerModule,
     MatCardModule,
-    MatRippleModule
+    MatRippleModule,
+    MatTabsModule
   ],
   templateUrl: './sale-order.component.html',
   styleUrls: ['./sale-order.component.css']

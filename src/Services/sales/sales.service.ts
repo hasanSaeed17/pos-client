@@ -67,5 +67,39 @@ export class SalesService {
   }
 
 
+   /* =====================================================
+     GET SALES REPORT (WITH FILTERS)
+  ===================================================== */
+
+  getSalesReport(filters?: {
+    period?: string;
+    paymentMethod?: string;
+    from?: string;
+    to?: string;
+  }): Observable<any> {
+
+    let params = new HttpParams();
+
+    if (filters) {
+
+      if (filters.period) {
+        params = params.set('period', filters.period);
+      }
+
+      if (filters.paymentMethod) {
+        params = params.set('paymentMethod', filters.paymentMethod);
+      }
+
+      if (filters.from) {
+        params = params.set('from', filters.from);
+      }
+
+      if (filters.to) {
+        params = params.set('to', filters.to);
+      }
+    }
+
+    return this.http.get<any>(`${this.testingBaseUrl}/report`, { params });
+  }
 
 }

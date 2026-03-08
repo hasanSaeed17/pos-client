@@ -1,0 +1,158 @@
+.report-wrapper {
+  padding: 20px;
+  background: #f5f6fa;
+  min-height: 100vh;
+
+  transform: scale(0.83);        /* try 0.85 first */
+  transform-origin: top left;    /* VERY IMPORTANT */
+  width: calc(100% / 0.87);
+  height: auto;   
+
+
+}
+
+
+/* ================= SUMMARY STRIP ================= */
+
+.summary-strip {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: #f5f6fa;
+  padding-bottom: 10px;
+}
+
+.summary-card {
+  flex: 1;
+  padding: 15px;
+  background: white;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.summary-card h3 {
+  margin: 5px 0 0;
+}
+
+.summary-card.highlight {
+  background: #e3f2fd;
+}
+
+
+/* ================= QUICK FILTERS ================= */
+
+.quick-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.active-btn {
+  background: #1976d2;
+  color: white;
+}
+
+.spacer {
+  flex: 1;
+}
+
+
+/* ================= REPORT CARD ================= */
+
+.report-card {
+  padding: 20px;
+}
+
+
+/* ================= FILTER GRID ================= */
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+
+/* ================= TABLE ================= */
+
+mat-panel-description {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.product-table th {
+  background: #e9edf1;
+  padding: 8px;
+  text-align: left;
+}
+
+.product-table td {
+  padding: 6px;
+  border-bottom: 1px solid #eee;
+}
+
+
+/* ================= SALE FOOTER ================= */
+
+.sale-footer {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+}
+
+
+/* ================= LOADING ================= */
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+
+/* ================= PRINT STYLES ================= */
+
+@media print {
+
+  body * {
+    visibility: hidden;
+  }
+
+  .report-wrapper,
+  .report-wrapper * {
+    visibility: visible;
+  }
+
+  .quick-filters,
+  .filter-section {
+    display: none;
+  }
+
+  .report-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+}

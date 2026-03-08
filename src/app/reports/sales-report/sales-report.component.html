@@ -1,1 +1,201 @@
-<p>sales-report works!</p>
+<div class="report-wrapper">
+
+  <!-- ================= SUMMARY STRIP ================= -->
+  <div class="summary-strip">
+
+    <div class="summary-card">
+      <div>Total Sales</div>
+      <h3>{{ totalSales }}</h3>
+    </div>
+
+    <div class="summary-card">
+      <div>Items Sold</div>
+      <h3>{{ totalItems }}</h3>
+    </div>
+
+    <div class="summary-card">
+      <div>Total Paid</div>
+      <h3>{{ totalPaid | number:'1.2-2' }}</h3>
+    </div>
+
+    <div class="summary-card">
+      <div>Pending</div>
+      <h3>{{ totalPending | number:'1.2-2' }}</h3>
+    </div>
+
+    <div class="summary-card highlight">
+      <div>Revenue</div>
+      <h3>{{ totalRevenue | number:'1.2-2' }}</h3>
+    </div>
+
+  </div>
+
+
+  <!-- ================= QUICK FILTERS ================= -->
+  <div class="quick-filters">
+
+    <button mat-stroked-button
+            [class.active-btn]="activePeriod === 'daily'"
+            (click)="togglePeriod('daily')">
+      Today
+    </button>
+
+    <button mat-stroked-button
+            [class.active-btn]="activePeriod === 'weekly'"
+            (click)="togglePeriod('weekly')">
+      This Week
+    </button>
+
+    <button mat-stroked-button
+            [class.active-btn]="activePeriod === 'monthly'"
+            (click)="togglePeriod('monthly')">
+      This Month
+    </button>
+
+    <span class="spacer"></span>
+
+    <button mat-button (click)="expandAll()">Expand All</button>
+    <button mat-button (click)="collapseAll()">Collapse All</button>
+
+  </div>
+
+
+  <!-- ================= REPORT CARD ================= -->
+  <mat-card class="report-card">
+
+    <!-- ================= FILTER FORM ================= -->
+    <div class="filter-section">
+
+      <form [formGroup]="filterForm" class="filter-grid">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Payment Method</mat-label>
+          <mat-select formControlName="paymentMethod">
+            <mat-option value="">All</mat-option>
+            <mat-option value="Cash">Cash</mat-option>
+            <mat-option value="Bank Transfer">Bank Transfer</mat-option>
+            <mat-option value="Online Wallets">Online Wallets</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>From</mat-label>
+          <input matInput [matDatepicker]="fromPicker" formControlName="from">
+          <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
+          <mat-datepicker #fromPicker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>To</mat-label>
+          <input matInput [matDatepicker]="toPicker" formControlName="to">
+          <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
+          <mat-datepicker #toPicker></mat-datepicker>
+        </mat-form-field>
+
+        <div class="filter-actions">
+
+          <button mat-raised-button color="primary"
+                  (click)="applyFilters()">
+            Apply
+          </button>
+
+          <button mat-stroked-button color="warn"
+                  (click)="resetFilters()">
+            Reset
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+
+    <!-- ================= LOADING ================= -->
+    <div *ngIf="isLoading" class="loading-container">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+
+
+    <!-- ================= SALES LIST ================= -->
+    <mat-accordion multi="true" *ngIf="!isLoading">
+
+      <mat-expansion-panel *ngFor="let sale of sales">
+
+        <mat-expansion-panel-header>
+
+          <mat-panel-title>
+            {{ sale.saleCode }}
+            —
+            {{ sale.customerName || 'Walk-in' }}
+            • {{ sale.items?.length }} items
+          </mat-panel-title>
+
+          <mat-panel-description>
+
+            <mat-chip
+              [color]="sale.isFullyPaid ? 'primary' : 'warn'"
+              selected>
+              {{ sale.isFullyPaid ? 'Paid' : 'Partial' }}
+            </mat-chip>
+
+            <span class="amount">
+              {{ sale.paidAmount }} / {{ sale.grandTotal }}
+            </span>
+
+          </mat-panel-description>
+
+        </mat-expansion-panel-header>
+
+
+        <!-- ================= ITEMS TABLE ================= -->
+        <table class="product-table">
+
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Category</th>
+              <th>Brand</th>
+              <th>Sell Price</th>
+              <th>Qty</th>
+              <th>Discount</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr *ngFor="let item of sale.items">
+
+              <td>{{ item.productName }}</td>
+              <td>{{ item.category }}</td>
+              <td>{{ item.brand }}</td>
+              <td>{{ item.sellingPrice }}</td>
+              <td>{{ item.quantity }}</td>
+              <td>{{ item.discount }}</td>
+              <td>{{ item.lineTotal }}</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+
+        <!-- ================= SALE FOOTER ================= -->
+        <div class="sale-footer">
+
+          <div>Subtotal: {{ sale.subtotal }}</div>
+          <div>Discount: {{ sale.totalDiscount }}</div>
+          <div>Paid: {{ sale.paidAmount }}</div>
+          <div><strong>Grand Total: {{ sale.grandTotal }}</strong></div>
+
+        </div>
+
+      </mat-expansion-panel>
+
+    </mat-accordion>
+
+  </mat-card>
+
+</div>
